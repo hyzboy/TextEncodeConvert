@@ -2,3 +2,4 @@
 
 target_link_libraries(TextEncodingConvert CMCore CMPlatform CMUtil)
 
+set_property(TARGET TextEncodingConvert PROPERTY FOLDER "CM/Tools/Text")
