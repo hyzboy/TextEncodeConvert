@@ -199,7 +199,7 @@ public:
     {
         const OSString sub_folder_name = fi.name;
 
-        if (sub_folder_name.GetBeginChar() == '.')return;         //跳过第一个字符为.的目录
+        if (sub_folder_name.GetFirstChar() == '.')return;         //跳过第一个字符为.的目录
 
         for (int i = 0; i < discard_folder_list.GetCount(); i++)
         {
