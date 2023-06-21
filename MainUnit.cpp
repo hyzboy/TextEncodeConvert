@@ -270,9 +270,9 @@ public:
         ConvertQtoB(new_filename.c_str(), new_filename.Length());
 #endif//
 
-        if (out_charset.codepage == ccpUTF8)Convert<UTF8TextOutputStream   >(fi.fullname, new_filename); else
-        if (out_charset.codepage == ccpUTF16LE)Convert<UTF16LETextOutputStream>(fi.fullname, new_filename); else
-        if (out_charset.codepage == ccpUTF16BE)Convert<UTF16BETextOutputStream>(fi.fullname, new_filename);
+        if (out_charset==UTF8CharSet    )Convert<UTF8TextOutputStream   >(fi.fullname, new_filename); else
+        if (out_charset==UTF16LECharSet )Convert<UTF16LETextOutputStream>(fi.fullname, new_filename); else
+        if (out_charset==UTF16BECharSet )Convert<UTF16BETextOutputStream>(fi.fullname, new_filename);
     }
 };//
 
@@ -394,10 +394,10 @@ int os_main(int argc,const os_char **argv)
         const OSString &out_cs_str=args[out_off+1];
 #endif//
 
-        if(charset_cmp(out_cs_str.c_str(),"utf8")==0)out_charset=CharSet(ccpUTF8);else
+        if(charset_cmp(out_cs_str.c_str(),"utf8")==0)out_charset=UTF8CharSet;else
         if(charset_cmp(out_cs_str.c_str(),"utf16")==0
          ||charset_cmp(out_cs_str.c_str(),"ucs2le")==0
-        )out_charset=CharSet(ccpUTF16LE);else
+        )out_charset=UTF16LECharSet;else
         {
             std::cout<<"out charset error,only support utf8 or utf16le"<<std::endl;
             return(-2);
